@@ -10,16 +10,17 @@ const adminRouter = require("./routes/adminRouter");
 const Admin = require("./models/adminModel");
 const Faculty = require("./models/facultyModel");
 const joinRouter = require("./routes/joinRouter");
-const messageRouter = require("./routes/messageRouter");
+const newsRouter = require("./routes/newsRouter");
 const app = express();
 
 // middlewares
-app.use(
-  cors({
-    origin: process.env.ORIGION, // add deployed frontend URL later
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: process.env.ORIGION, // add deployed frontend URL later
+//     credentials: true,
+//   })
+// );
+app.use(cors());
 app.use(express.json());
 
 // routes
@@ -27,13 +28,13 @@ app.use("/api/gallery", galleryRouter);
 app.use("/api/faculty", facultyRouter);
 app.use("/api/courses", coursesRouter);
 app.use("/api/admin", adminRouter);
-app.use("/api/join", joinRouter);
-app.use("/api/message", messageRouter);
+// app.use("/api/join", joinRouter);
+app.use("/api/news", newsRouter);
 
 // make new admin
 // const seedAdmin = async () => {
 //   await Admin.deleteMany({});
-//   const admin = new Admin({ username: "admin", password: "1234" });
+//   const admin = new Admin({ username: "aimsCMS", password: "Aims@cms-786" });
 //   await admin.save();
 //   console.log("Admin created");
 //   process.exit();
